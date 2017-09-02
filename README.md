@@ -7,13 +7,14 @@ Dado um arquivo (obrigatoriamente chamado in.txt) contendo em sua primeira linha
 ## Exemplo de entrada
 
 Arquivo de entrada (in.txt):
-
+```
 15
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper, est non gravida venenatis, est neque fringilla quam, hendrerit ultrices justo turpis nec augue.
+````
 
 - Arquivo de Saída (out.txt):
-
+```
 Lorem ipsum
 dolor sit amet,
 consectetur
@@ -27,3 +28,4 @@ quam, hendrerit
 ultrices justo
 turpis nec
 augue.
+```
