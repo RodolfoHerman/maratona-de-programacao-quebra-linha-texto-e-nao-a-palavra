@@ -36,56 +36,53 @@ public class Q3 {
     
     public static void main(String[] args) throws IOException {
         
-        BufferedReader leitor = new BufferedReader (new FileReader (in));
-        BufferedWriter escritor = new BufferedWriter (new FileWriter (out));
+        BufferedReader leitor = new BufferedReader(new FileReader(in));
+        BufferedWriter escritor = new BufferedWriter(new FileWriter(out));
         
-        int M = Integer.parseInt(leitor.readLine().trim());      
-            
+        int m = Integer.parseInt(leitor.readLine().trim());
         String [] palavras = leitor.readLine().split(" ");
         
+        int tamanho = 0;
         String temp = "";
-		
-		int tam = 0;
         
-        for (int x = 0; x < palavras.length; x++) {
+        for(String palavra: palavras) {
             
-            temp = temp + palavras[x] + " ";	
-			tam += palavras[x].trim().length();
+            tamanho += palavra.length();
+            temp = temp.concat(palavra).concat(" ");
             
-            if (tam > M) {
-		 
-				temp = temp.trim();
+            if(tamanho >= m) {
                 
-				if (temp.contains(" ")) {
-					
-					escritor.write(temp.substring(0, temp.lastIndexOf(" ")));
-					
-					String excesso = temp.substring((temp.lastIndexOf(" ")+1), temp.length());
-					
-					temp = excesso + " ";
-					tam = excesso.length();
-					
-				} else {
-					
-					escritor.write(temp);
-					temp = "";
-					tam = 0;
-					
-				}
+                temp = temp.trim();
+                
+                if(temp.contains(" ")) {
+                    
+                    String texto = temp.substring(0, temp.lastIndexOf(" "));
+                    String termo = temp.substring(temp.lastIndexOf(" ")+1);
+                    
+                    escritor.write(texto);
+
+                    tamanho = termo.length();
+                    temp = termo.concat(" ");
+                    
+                } else {
+                    
+                    escritor.write(temp);
+                
+                    tamanho = 0;
+                    temp = "";                    
+                }
                 
                 escritor.newLine();
             } 
         }
         
-        if (temp.length() != 0) {
+        if(tamanho != 0) {
             
             escritor.write(temp);
-            
         }
         
         escritor.flush();
-        escritor.close();
-        
         leitor.close();
+        escritor.close();
     }
 }
